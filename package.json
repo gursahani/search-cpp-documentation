@@ -1,11 +1,12 @@
 {
 	"name": "library-documentation-cpp",
 	"description": "Search Documentation, docs, devdocs, cpp",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"publisher": "kunalg",
 	"engines": {
 		"vscode": "^1.31.0"
 	},
+	"icon":"img/cpp_logo.png",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/gursahani/search-cpp-documentation.git"
