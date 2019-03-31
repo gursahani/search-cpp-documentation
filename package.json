@@ -1,7 +1,7 @@
 {
 	"name": "library-documentation-cpp",
 	"description": "Search Documentation, docs, devdocs, cpp",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"publisher": "kunalg",
 	"engines": {
 		"vscode": "^1.31.0"
@@ -26,9 +26,15 @@
 			{
 				"command": "docs.start",
 				"title": "cpp docs",
-				"category": "search cpp documentation"
+				"category": "search"
 			}
-		]
+		],
+		"keybindings": [{
+			"command": "docs.start",
+			"key": "ctrl+shift+A",
+			"mac": "cmd+shift+A",
+			"when": "editorTextFocus"
+		}]
 	},
 	"scripts": {
 		"vscode:prepublish": "tsc -p ./",
