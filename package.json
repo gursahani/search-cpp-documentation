@@ -1,0 +1,45 @@
+{
+	"name": "library-documentation-cpp",
+	"description": "Search Documentation, docs, devdocs, cpp",
+	"version": "0.0.1",
+	"publisher": "Kunal Gursahani",
+	"engines": {
+		"vscode": "^1.31.0"
+	},
+	
+	"categories": ["Other", "Programming Languages"], 
+	
+	"keywords":["search", "documentation", "docs", "devdocs", "cpp"],
+	"activationEvents": [
+		"onCommand:docs.start",
+		"onWebviewPanel:docs",
+		"onLanguage:cpp"
+		
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "docs.start",
+				"title": "docs",
+				"category": "Search Documentation"
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "tsc -p ./",
+		"compile": "tsc -p ./",
+		"watch": "tsc -w -p ./",
+		"postinstall": "node ./node_modules/vscode/bin/install"
+	},
+	"dependencies": {
+		"cors": "^2.8.5",
+		"vscode": "^1.1.29",
+		"xmlhttprequest": "^1.8.0"
+	},
+	"devDependencies": {
+		"@types/node": "^10.5.2",
+		"tslint": "^5.11.0",
+		"typescript": "^2.9.2"
+	}
+}
