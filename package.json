@@ -2,11 +2,14 @@
 	"name": "library-documentation-cpp",
 	"description": "Search Documentation, docs, devdocs, cpp",
 	"version": "0.0.1",
-	"publisher": "Kunal Gursahani",
+	"publisher": "kunalg",
 	"engines": {
 		"vscode": "^1.31.0"
 	},
-	
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/gursahani/search-cpp-documentation.git"
+	  },
 	"categories": ["Other", "Programming Languages"], 
 	
 	"keywords":["search", "documentation", "docs", "devdocs", "cpp"],
@@ -34,10 +37,10 @@
 	},
 	"dependencies": {
 		"cors": "^2.8.5",
-		"vscode": "^1.1.29",
 		"xmlhttprequest": "^1.8.0"
 	},
 	"devDependencies": {
+		"vscode": "^1.1.29",
 		"@types/node": "^10.5.2",
 		"tslint": "^5.11.0",
 		"typescript": "^2.9.2"
