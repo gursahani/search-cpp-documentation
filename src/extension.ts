@@ -13,26 +13,44 @@
 import * as vscode from 'vscode';
 
 export function activate(context: vscode.ExtensionContext) {
+  let currentDoc: vscode.WebviewPanel | undefined = undefined;
+
   context.subscriptions.push(
     vscode.commands.registerCommand('docs.start', () => {
-      const panel = vscode.window.createWebviewPanel(
-        'docs',
-        'Search CPP Documentation',
-        
-        {viewColumn:vscode.ViewColumn.Beside,
-        preserveFocus:false},
-        {
-          enableScripts: true,
-          retainContextWhenHidden: true
-        }
-      );
-      vscode.window.setStatusBarMessage("Search cpp reference");
-      panel.webview.html = getWebviewContent();
+      if (currentDoc) {
+        currentDoc.reveal(vscode.ViewColumn.Beside);
+        currentDoc.webview.html = getWebviewContent();
+      } else {
+        currentDoc = vscode.window.createWebviewPanel(
+          'docs',
+          'Search CPP Documentation',
+          {
+            viewColumn: vscode.ViewColumn.Beside,
+            preserveFocus: false
+          },
+          {
+            enableScripts: true,
+            enableFindWidget: true,
+            retainContextWhenHidden: true
+          }
+        );
+        vscode.window.setStatusBarMessage("Search cpp reference");
+        currentDoc.webview.html = getWebviewContent();
+        currentDoc.onDidDispose(() => {
+          currentDoc = undefined;
+        }, null, context.subscriptions);
+      }
     })
   );
 }
 
 function getWebviewContent() {
+  const active = vscode.window.activeTextEditor;
+  let site = 'http://www.cppreference.com/';
+  if (!active.selection.isEmpty) {
+    site += 'mwiki/index.php?title=Special%3ASearch&search=';
+    site += encodeURIComponent(active.document.getText(active.selection));
+  }
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,7 +65,7 @@ function getWebviewContent() {
       </style>
 </head>
 <body>    
-<iframe src="http://www.cppreference.com/" width="100%" height="100%" ></iframe>
+<iframe src="` + site + `" width="100%" height="100%" ></iframe>
 </body>
 </html>`;
-}
+} 

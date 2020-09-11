@@ -1,7 +1,7 @@
 {
 	"name": "library-documentation-cpp",
 	"description": "Search Documentation, docs, devdocs, cpp",
-	"version": "0.0.4",
+	"version": "0.0.5",
 	"publisher": "kunalg",
 	"engines": {
 		"vscode": "^1.31.0"
